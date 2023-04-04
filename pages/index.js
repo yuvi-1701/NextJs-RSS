@@ -29,7 +29,7 @@ export default function Home({ items }) {
   return (
     <>
     {/* <link rel="styles" href="./styles.module.css" precedence="default" /> */}
-    <div className="contaner">
+    <div className="container">
         <Head>
             <title>My News Feed</title>
         </Head>
@@ -47,22 +47,20 @@ export default function Home({ items }) {
             <h1 className="heading">My News Feed</h1>
             <div className="articles">
             {items.map((item) => (
-                <a key={item.guid} href={item.link} target="_blank" rel="noopener noreferrer">
                 <div className="article">
-                    {item.media && item.media.content && (
-                    <Image src={item.media.content.$.url} alt={item.media.content.$.title} />
+                    {item.media && item['media:content'] && (
+                    <Image src={item['media:content'].$.url} alt={item.media.content.$.title}  className='articleImage'/>
                         )}
-                        {/* Error in fetching media url */} 
+                        {/* Error in fetching image url */}
                     <div className="articleDetails">
+                    <a key={item.guid} href={item.link} target="_blank" rel="noopener noreferrer">
                     <h2 className="articleTitle" style={{color: "black"}}>{item.title}</h2>
-                    <br></br>
-                    <span className="articleDate"><i>Published Date : </i>{new Date(item.pubDate).toLocaleDateString()}</span>
-                    <br></br>
-                    <br></br>
+                    </a>
+                    {/* <Image src={item['media:content.$.url']} alt={item['media:content.$.title']} className='articleImage'/> */}
+                    <span className="articleDate"><i>Published Date : </i>{new Date(item.pubDate).toLocaleDateString()}</span>                 
                     <p className="articleSnippet">{item.contentSnippet}</p>
                     </div>
                 </div>
-                </a>
             ))}
             </div>
             <Footer />

@@ -1,6 +1,15 @@
 import Head from 'next/head';
-import { getFeedData } from './getFeedData';
-import styles from '../styles/Home.module.css'
+import Image from 'next/image';
+// import { getFeedData } from './getFeedData';
+// import styles from '../styles/Home.module.css'
+import Parser from 'rss-parser';
+
+async function getFeedData() {
+  const parser = new Parser();
+  const feed = await parser.parseURL('https://www.essentiallysports.com/feed/');
+  console.log(feed)
+  return feed.items;
+}
 
 
 export async function getStaticProps() {
@@ -22,7 +31,7 @@ export default function Home({ items }) {
             <a key={item.guid} href={item.link} target="_blank" rel="noopener noreferrer">
               <div className="article">
                 {item.media && item.media.content && (
-                <img src={item.media.content.$.url} alt={item.media.content.$.title} />
+                <Image src={item.media.content.$.url} alt={item.media.content.$.title} />
                     )}
                     {/* Error in fetching media url */} 
                 <div className="articleDetails">

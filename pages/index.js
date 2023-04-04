@@ -54,7 +54,7 @@ export default function Home({ items }) {
                         )}
                         {/* Error in fetching image url */}
                     <div className="articleDetails">
-                        <h2 className="articleTitle" style={{color: "black"}}>{item.title}</h2>
+                        <h2 className="articleTitle" >{item.title}</h2>
                         <span className="articleDate"><i>Published Date : </i>{new Date(item.pubDate).toLocaleDateString()}</span>                 
                         <p className="articleSnippet">{item.contentSnippet}</p>
                     </div>

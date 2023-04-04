@@ -54,7 +54,7 @@ export default function Home({ items }) {
                         )}
                         {/* Error in fetching media url */} 
                     <div className="articleDetails">
-                    <h2 className="articleTitle" style={{color: "red"}}>{item.title}</h2>
+                    <h2 className="articleTitle" style={{color: "black"}}>{item.title}</h2>
                     <br></br>
                     <span className="articleDate"><i>Published Date : </i>{new Date(item.pubDate).toLocaleDateString()}</span>
                     <br></br>
